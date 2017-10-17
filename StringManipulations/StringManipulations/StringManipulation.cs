@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StringManipulations
@@ -28,6 +29,14 @@ namespace StringManipulations
         {
             var expected = "elgoog";
             var actual = ReverseString("google");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Test_CountNumOfWords()
+        {
+            var expected = 16;
+            var actual = CountNumOfWords("This is my to do list for today: groceries, gym, and read chapter 1 and 2.");
             Assert.AreEqual(expected, actual);
         }
 
@@ -75,13 +84,25 @@ namespace StringManipulations
             var reversedInput = new char[input.Length];
             var inputLastIndex = input.Length - 1;
 
-            foreach (var letter in input)
+            foreach (var ch in input)
             {
-                reversedInput[inputLastIndex--] = letter;
+                reversedInput[inputLastIndex--] = ch;
             }
 
             return new string(reversedInput);
         }
 
+        public int CountNumOfWords(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return 0;
+            /*
+             // using regular express
+              var wordCount = Regex.Matches(input, @"\b[A-Za-z0-9]+\b").Count;
+            */
+            var words = input.Split(new[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var wordCount = words.Length;
+
+            return wordCount;
+        }
     }
 }
