@@ -40,6 +40,16 @@ namespace StringManipulations
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Test_OccurrencesOfAWord()
+        {
+            var text = "Pork chop chicken spare ribs, short ribs meatball short loin porchetta picanha sausage filet mignon.";
+            var word = "ribs";
+            var expected = 1;
+            var actual = OccurrencesOfAWord(text, word);
+            Assert.AreEqual(expected, actual);
+        }
+
         public string RemoveDuplicateChars(string input)
         {
             if(input == null) throw new ArgumentNullException(nameof(input));
@@ -96,11 +106,20 @@ namespace StringManipulations
         {
             if (string.IsNullOrWhiteSpace(input)) return 0;
             /*
-             // using regular express
+             // using regular expression
               var wordCount = Regex.Matches(input, @"\b[A-Za-z0-9]+\b").Count;
             */
             var words = input.Split(new[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
             var wordCount = words.Length;
+
+            return wordCount;
+        }
+
+        public int OccurrencesOfAWord(string text, string word)
+        {
+            var splittedText = text.Split(new[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var words = splittedText.Where(w => string.Equals(w, word, StringComparison.CurrentCultureIgnoreCase));
+            var wordCount = words.Count();
 
             return wordCount;
         }
