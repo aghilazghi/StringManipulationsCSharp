@@ -23,6 +23,14 @@ namespace StringManipulations
             Assert.IsTrue(result);
         }
 
+        [TestMethod]
+        public void Test_ReverseString()
+        {
+            var expected = "elgoog";
+            var actual = ReverseString("google");
+            Assert.AreEqual(expected, actual);
+        }
+
         public string RemoveDuplicateChars(string input)
         {
             if(input == null) throw new ArgumentNullException(nameof(input));
@@ -40,6 +48,8 @@ namespace StringManipulations
         {
             if (firstWord == null || secondWord == null) return false;
 
+            if (firstWord.Length != secondWord.Length) return false;
+
             var firstWordCharsFrequencies = new Dictionary<char, int>();
 
             foreach (var item in firstWord.ToLower())
@@ -55,5 +65,23 @@ namespace StringManipulations
             }
             return firstWordCharsFrequencies.Values.All(c => c == 0);
         }
+
+        public string ReverseString(string input)
+        {
+            if(string.IsNullOrWhiteSpace(input)) throw new ArgumentNullException();
+
+            if (input.Length == 1) return input;
+
+            var reversedInput = new char[input.Length];
+            var inputLastIndex = input.Length - 1;
+
+            foreach (var letter in input)
+            {
+                reversedInput[inputLastIndex--] = letter;
+            }
+
+            return new string(reversedInput);
+        }
+
     }
 }
