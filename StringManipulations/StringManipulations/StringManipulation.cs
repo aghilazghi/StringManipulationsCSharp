@@ -45,9 +45,17 @@ namespace StringManipulations
         {
             var text = "Pork chop chicken spare ribs, short ribs meatball short loin porchetta picanha sausage filet mignon.";
             var word = "ribs";
-            var expected = 1;
+            var expected = 2;
             var actual = OccurrencesOfAWord(text, word);
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Test_ValidateCreditCardNumber()
+        {
+            var creditCardNumber = "4417123456789113";
+            var actual = ValidateCreditCardNumber(creditCardNumber);
+            Assert.IsTrue(actual);
         }
 
         public string RemoveDuplicateChars(string input)
@@ -118,10 +126,47 @@ namespace StringManipulations
         public int OccurrencesOfAWord(string text, string word)
         {
             var splittedText = text.Split(new[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var words = splittedText.Where(w => string.Equals(w, word, StringComparison.CurrentCultureIgnoreCase));
+            var words = splittedText.Where(w => string.Equals(w, word, StringComparison.OrdinalIgnoreCase));
             var wordCount = words.Count();
 
             return wordCount;
+        }
+
+        public bool ValidateCreditCardNumber(string creditCardNumber)
+        {
+            var creditCardLenght = creditCardNumber.Length;
+
+            if(creditCardLenght == 0) throw  new ArgumentException();
+
+            var total = 0;
+
+            //operation that starts from first number and escapes the following number
+            for (var i = 0; i < creditCardLenght; i += 2)
+            {
+                //double digits by escaping one starting form the first number
+                var doubled = Convert.ToInt32(creditCardNumber.Substring(i, 1)) * 2;
+
+                // if the product is less than 10, add it to the total otherwise split the two digits and add them 
+                if (doubled < 10)
+                {
+                    total += doubled;
+                }
+                else
+                {
+                    var doubleDigit = doubled.ToString();
+                    total += doubleDigit.Select((t, j) => Convert.ToInt32(doubleDigit.Substring(j, 1))).Sum();
+                }
+            }
+
+            //operation that starts from second number and escapes the following number
+            for (var i = 1; i < creditCardLenght; i += 2)
+            {
+                total += Convert.ToInt32(creditCardNumber.Substring(i, 1));
+
+            }
+
+            return total % 10 == 0;
+
         }
     }
 }
