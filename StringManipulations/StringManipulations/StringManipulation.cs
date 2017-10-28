@@ -58,6 +58,20 @@ namespace StringManipulations
             Assert.IsTrue(actual);
         }
 
+        [TestMethod]
+        public void Test_FindWordsAfterCategoriesColon()
+        {
+            var text =
+                "We have large selection of goods.Customers can buy from" +
+                " the category:shoes which is the best selling in our " +
+                "inventory also category:shirts is the second to our shoes " +
+                "inventory. Also, we category:computers and other items…";
+            var categoryColon = "category:";
+            var expectedWords = new List<string>{"shoes", "shirts", "computers"};
+            var actualWords = FindWordsAfterCategoriesColon(text, categoryColon);
+            CollectionAssert.AreEqual(expectedWords, actualWords);
+        }
+
         public string RemoveDuplicateChars(string input)
         {
             if(input == null) throw new ArgumentNullException(nameof(input));
@@ -167,6 +181,23 @@ namespace StringManipulations
 
             return total % 10 == 0;
 
+        }
+
+        public List<string> FindWordsAfterCategoriesColon(string text, string categoryPlusColon)
+        {
+            var increment = 0;
+            var foundWords = new List<string>();
+            while (true)
+            {
+                var specifiedWordFound = text.IndexOf(categoryPlusColon, increment);
+                if(specifiedWordFound == -1) break;
+                var wordStart = specifiedWordFound + categoryPlusColon.Length;
+                var wordEnd = text.IndexOf(" ", wordStart);
+                var wordLength = wordEnd - wordStart;
+                foundWords.Add(text.Substring(wordStart, wordLength));
+                increment = wordEnd + 1;
+            }
+            return foundWords;
         }
     }
 }
