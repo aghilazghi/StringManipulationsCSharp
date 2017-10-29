@@ -64,12 +64,21 @@ namespace StringManipulations
             var text =
                 "We have large selection of goods.Customers can buy from" +
                 " the category:shoes which is the best selling in our " +
-                "inventory also category:shirts is the second to our shoes " +
-                "inventory. Also, we category:computers and other items…";
+                "inventory also category:shirts is the second to our shoes. " +
+                "Also, we have category:computers and other items…";
             var categoryColon = "category:";
             var expectedWords = new List<string>{"shoes", "shirts", "computers"};
             var actualWords = FindWordsAfterCategoriesColon(text, categoryColon);
             CollectionAssert.AreEqual(expectedWords, actualWords);
+        }
+
+        [TestMethod]
+        public void Test_InsertDollarSignAfterEachChar()
+        {
+            var word = "Hello";
+            var expected = "H$e$l$l$o";
+            var actual = InsertDollarSignAfterEachChar(word);
+            Assert.AreEqual(expected, actual);
         }
 
         public string RemoveDuplicateChars(string input)
@@ -198,6 +207,16 @@ namespace StringManipulations
                 increment = wordEnd + 1;
             }
             return foundWords;
+        }
+
+        //Insert a dollar sign after each character of a input word but the last one recursively
+        public string InsertDollarSignAfterEachChar(string inputWord)
+        {
+            if (string.IsNullOrWhiteSpace(inputWord)) return string.Empty;
+
+            if (inputWord.Length <= 1) return inputWord;
+
+            return inputWord[0] + "$" + InsertDollarSignAfterEachChar(inputWord.Substring(1));
         }
     }
 }
