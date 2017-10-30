@@ -48,11 +48,24 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StringManipulation.cs" />
+    <Compile Include="AnagramsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveDuplicateCharactersTest.cs" />
+    <Compile Include="StringReverseTest.cs" />
+    <Compile Include="CountingNumberOfWordsTest.cs" />
+    <Compile Include="OccurrenceOfWordTest.cs" />
+    <Compile Include="FindMatchingWordsAfterSpeciedStringTest.cs" />
+    <Compile Include="InsertDollarSignAfterTest.cs" />
+    <Compile Include="ValidateCreditCardNumberTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StringManipulationLibrary\StringManipulationsLibrary.csproj">
+      <Project>{b760d4ad-ff26-4ae1-8ba1-7fe7ca345754}</Project>
+      <Name>StringManipulationsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
