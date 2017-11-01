@@ -57,6 +57,7 @@
     <Compile Include="FindMatchingWordsAfterSpeciedStringTest.cs" />
     <Compile Include="InsertDollarSignAfterTest.cs" />
     <Compile Include="ReplaceVowelsTest.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="ValidateCreditCardNumberTest.cs" />
   </ItemGroup>
   <ItemGroup>
