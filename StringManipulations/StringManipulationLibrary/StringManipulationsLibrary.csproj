@@ -50,6 +50,7 @@
     <Compile Include="RepeatChar.cs" />
     <Compile Include="ReplaceVowels.cs" />
     <Compile Include="ReverseString.cs" />
+    <Compile Include="StarKill.cs" />
     <Compile Include="ValidateCreditCardNumber.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

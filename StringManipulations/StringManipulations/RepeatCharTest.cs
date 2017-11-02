@@ -5,7 +5,7 @@ using StringManipulationLibrary;
 namespace StringManipulations
 {
     [TestClass]
-    public class UnitTest1
+    public class RepeatCharTest
     {
         [TestMethod]
         public void Test_Repeat_InputString_ExpectedRepeatedCharsReturnsRepeatedChars()
