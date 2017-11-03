@@ -52,6 +52,7 @@
     <Compile Include="ReverseString.cs" />
     <Compile Include="StarKill.cs" />
     <Compile Include="ValidateCreditCardNumber.cs" />
+    <Compile Include="WordsCount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

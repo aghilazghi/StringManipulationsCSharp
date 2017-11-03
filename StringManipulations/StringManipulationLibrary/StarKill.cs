@@ -10,8 +10,9 @@ namespace StringManipulationLibrary
     {
         /*
          * Return a version of the given string, where for every star (*) character
-         * in the string the star and chars immediately to its left and right
-         * are gone. Star cannot be placed in the beginning or in the end.
+         * in the string, chars immediately to the left and right of a star
+         * are gone. If the input string has a leading or trailing star, returns the input string
+         * without modification.
          */
         public string Kill(string input)
         {
