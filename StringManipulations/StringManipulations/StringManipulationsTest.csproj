@@ -59,6 +59,7 @@
     <Compile Include="ReplaceVowelsTest.cs" />
     <Compile Include="RepeatCharTest.cs" />
     <Compile Include="StarKillTest.cs" />
+    <Compile Include="WordWithLengthTest.cs" />
     <Compile Include="WordLengthTest.cs" />
     <Compile Include="WordsCountTest.cs" />
     <Compile Include="ValidateCreditCardNumberTest.cs" />

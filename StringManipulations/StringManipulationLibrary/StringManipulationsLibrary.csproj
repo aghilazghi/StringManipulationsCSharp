@@ -54,6 +54,7 @@
     <Compile Include="StarKill.cs" />
     <Compile Include="ValidateCreditCardNumber.cs" />
     <Compile Include="WordsCount.cs" />
+    <Compile Include="WordWithLength.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
