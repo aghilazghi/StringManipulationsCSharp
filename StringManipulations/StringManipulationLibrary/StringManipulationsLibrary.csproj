@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Anagrams.cs" />
     <Compile Include="CountingNumberOfWords.cs" />
+    <Compile Include="WordLength.cs" />
     <Compile Include="FindMatchingWords.cs" />
     <Compile Include="InsertDollarSignAfter.cs" />
     <Compile Include="OccurrenceOfWord.cs" />
